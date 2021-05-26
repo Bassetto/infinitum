@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro Municipios</title>
+</head>
+
+<body>
+<h1>Tela de Cadastro Municipios</h1>
+<form action="/municipio/salvar" method="post">
+    <label for="nome"><b>Nome Completo</b></label>
+    <input id="nome" type="text" placeholder="Enter nome" name="nome" required>
+
+    <label for="email"><b>E-mail</b></label>
+    <input id="email" type="email"	placeholder="Enter email" name="email" required>
+
+    <label for="acompanhante"><b>Acompanhante</b></label>
+    <input id="acompanhante" type="text"	placeholder="Enter acompanhante" name="acompanhante" required>
+
+    <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Cadastrar</button>
+    </div>
+</form>
+</body>
+</html>

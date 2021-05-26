@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <title>Cadastro Convidados</title>
+</head>
+<body>
+<div class="container text-center">
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${countyName}"></h1>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Orgao</th>
+            <th scope="col">Mês</th>
+            <th scope="col">nr_empenho</th>
+            <th scope="col">id_fornecedor</th>
+            <th scope="col">nm_fornecedor</th>
+            <th scope="col">dt_emissao_despesa</th>
+            <th scope="col">vl_despesa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="county : ${counties}">
+            <td th:text="${county.orgao}"></td>
+            <td th:text="${county.mes}"></td>
+            <td th:text="${county.nr_empenho}"></td>
+            <td th:text="${county.id_fornecedor}"></td>
+            <td th:text="${county.nm_fornecedor}"></td>
+            <td th:text="${county.dt_emissao_despesa}"></td>
+            <td th:text="${county.vl_despesa}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

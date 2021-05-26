@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <title>Cadastro Convidados</title>
+</head>
+
+<body>
+
+<div class="container text-center">
+    <div class="jumbotron">
+        <h1 class="display-4">Lista de Counties</h1>
+    </div>
+    <div>
+        <form id="form" class="" th:action="@{/municipios/consulta}" method="post" th:object="${county}">
+            <div class="row">
+                <div class="form-floating col-sm-12">
+                    <label class="form-label mx-2" for="county">Municípios</label>
+                    <input class="form-control" type="search" id="county"
+                           placeholder="Digite o munícipio que deseja pesquisar" list="municipios" name="name" th:field="*{name}"
+                           required>
+                    <div class="invalid-feedback">
+                        Digite um munícipio válido
+                    </div>
+                </div>
+            </div>
+            <div id="info" class="row invisible">
+                <div class="col-sm-6">
+                    <select name="tipo" th:field="*{tipo}">
+                        <option th:value="receitas" label="Receitas"></option>
+                        <option th:value="despesas" label="Despesas"></option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <input type="month" id="data">
+                </div>
+            </div>
+            <div class="row my-4 justify-content-center">
+                <div class="btn-group col-sm-4">
+                    <button type="submit" class="btn btn-primary">Consultar</button>
+                </div>
+            </div>
+            <datalist id="municipios">
+                <option th:each="county : ${counties}" th:value="${county.municipio_extenso}"></option>
+            </datalist>
+            <div>
+                <input id="fullCounty" type="hidden" name="fullName" th:field="*{fullName}">
+                <input type="hidden" name="ano" id="ano" th:field="*{ano}">
+                <input type="hidden" name="mes" id="mes" th:field="*{mes}">
+            </div>
+            <datalist id="municipios_extenso">
+                <option th:each="county : ${counties}" th:value="${county.municipio}"
+                        th:label="${county.municipio_extenso}"></option>
+            </datalist>
+        </form>
+    </div>
+    <!--    <table class="table" >-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--            <th scope="col">Nome</th>-->
+    <!--            <th scope="col">Nome por Extenso</th>-->
+    <!--            <th class="text-center" scope="col">Ação</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr th:each="county : ${counties}">-->
+    <!--            <td th:text="${county.municipio}"></td>-->
+    <!--            <td th:text="${county.municipio_extenso}"></td>-->
+    <!--            <td class="text-center">-->
+    <!--                <a th:href="@{/municipios/receitas/{countyName}(countyName = ${county.municipio})}" class="btn btn-primary">Receitas</a>-->
+    <!--                <a th:href="@{/municipios/despesas/{countyName}(countyName = ${county.municipio})}" class="btn btn btn-danger">Despesas</a>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script src="/consulta.js" lang="text/javascript"></script>
+</body>
+</html>
