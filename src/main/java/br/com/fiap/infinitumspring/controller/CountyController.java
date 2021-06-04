@@ -3,7 +3,6 @@ package br.com.fiap.infinitumspring.controller;
 import java.util.List;
 
 import javax.validation.Valid;
-
 import br.com.fiap.infinitumspring.model.County;
 import br.com.fiap.infinitumspring.model.CountyConsulta;
 import br.com.fiap.infinitumspring.model.CountyDespesa;
@@ -57,10 +56,10 @@ public class CountyController {
     }
 
     @PostMapping("/salvar")
-    public String salvarCounty(@Valid CountyDto convidadoDto, BindingResult result) {
+    public String salvarCounty(@Valid CountyDto countyDto, BindingResult result) {
 
         if (!result.hasErrors()) {
-            service.saveCounty(convidadoDto);
+            service.saveCounty(countyDto);
             return "redirect:/municipios/listar";
         }
 

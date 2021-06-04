@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width"/>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
           rel="stylesheet"/>
-    <title>Cadastro Convidados</title>
+    <title>Lista de Municípios</title>
 </head>
 
 <body>
@@ -30,13 +30,15 @@
             </div>
             <div id="info" class="row invisible">
                 <div class="col-sm-6">
-                    <select name="tipo" th:field="*{tipo}">
+                    <select name="tipo" id="tipo" th:field="*{tipo}">
                         <option th:value="receitas" label="Receitas"></option>
                         <option th:value="despesas" label="Despesas"></option>
                     </select>
+                    <label for="tipo">Selecione o que deseja consultar do município</label>
                 </div>
                 <div class="col-sm-6">
-                    <input type="month" id="data">
+                    <input type="month" id="mesAno">
+                    <label for="mesAno">Selecione o mês e o ano que deseja consultar</label>
                 </div>
             </div>
             <div class="row my-4 justify-content-center">
@@ -58,25 +60,6 @@
             </datalist>
         </form>
     </div>
-    <!--    <table class="table" >-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--            <th scope="col">Nome</th>-->
-    <!--            <th scope="col">Nome por Extenso</th>-->
-    <!--            <th class="text-center" scope="col">Ação</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
-    <!--        <tr th:each="county : ${counties}">-->
-    <!--            <td th:text="${county.municipio}"></td>-->
-    <!--            <td th:text="${county.municipio_extenso}"></td>-->
-    <!--            <td class="text-center">-->
-    <!--                <a th:href="@{/municipios/receitas/{countyName}(countyName = ${county.municipio})}" class="btn btn-primary">Receitas</a>-->
-    <!--                <a th:href="@{/municipios/despesas/{countyName}(countyName = ${county.municipio})}" class="btn btn btn-danger">Despesas</a>-->
-    <!--            </td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--    </table>-->
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
