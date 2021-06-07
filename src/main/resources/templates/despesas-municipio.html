@@ -13,32 +13,36 @@
     <div class="jumbotron">
         <h1 class="display-4" th:text="${countyName}"></h1>
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Orgao</th>
-            <th scope="col">Mês</th>
-            <th scope="col">nr_empenho</th>
-            <th scope="col">id_fornecedor</th>
-            <th scope="col">nm_fornecedor</th>
-            <th scope="col">dt_emissao_despesa</th>
-            <th scope="col">vl_despesa</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="county : ${counties}">
-            <td th:text="${county.orgao}"></td>
-            <td th:text="${county.mes}"></td>
-            <td th:text="${county.nr_empenho}"></td>
-            <td th:text="${county.id_fornecedor}"></td>
-            <td th:text="${county.nm_fornecedor}"></td>
-            <td th:text="${county.dt_emissao_despesa}"></td>
-            <td th:text="${county.vl_despesa}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div th:if="${counties.size() > 0}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Orgao</th>
+                <th scope="col">Mês</th>
+                <th scope="col">nr_empenho</th>
+                <th scope="col">id_fornecedor</th>
+                <th scope="col">nm_fornecedor</th>
+                <th scope="col">dt_emissao_despesa</th>
+                <th scope="col">vl_despesa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="county, i : ${counties}">
+                <td th:text="${counties[__${i.index}__].orgao}"></td>
+                <td th:text="${counties[__${i.index}__].mes}"></td>
+                <td th:text="${counties[__${i.index}__].nr_empenho}"></td>
+                <td th:text="${counties[__${i.index}__].id_fornecedor}"></td>
+                <td th:text="${counties[__${i.index}__].nm_fornecedor}"></td>
+                <td th:text="${counties[__${i.index}__].dt_emissao_despesa}"></td>
+                <td th:text="${counties[__${i.index}__].vl_despesa}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${counties.size() > 0}">
+        <h3>Não foi contrada nenhuma despesa para esse mês</h3>
+    </div>
 </div>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

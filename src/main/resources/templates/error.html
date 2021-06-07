@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
     <title>Municípios</title>
 </head>
 <body>
     <main class="container">
-        <h1 class="display-2">Não foi possivel encontrar o conteúdo desejado</h1>
+        <div>
+            <h1 class="display-4 text-center">Não foi possivel encontrar o conteúdo desejado</h1>
+        </div>
+        <div class="btn-group">
+            <a type="button" role="button" href="/municipios/listar" class="btn btn-primary">Voltar</a>
+        </div>
     </main>
 </body>
 </html>

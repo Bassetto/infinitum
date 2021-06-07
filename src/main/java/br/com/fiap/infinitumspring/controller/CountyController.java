@@ -14,8 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.fiap.infinitumspring.dto.CountyDto;
-
 @Controller
 @RequestMapping("/municipios")
 public class CountyController {
@@ -43,27 +41,16 @@ public class CountyController {
 
         if (county.getTipo().equals("receitas")) {
             view = new ModelAndView("receitas-municipio");
-            List<CountyReceita> counties = service.getCountyReceitas(county.getFullName(), county.getAno(), county.getMes());
-            view.addObject("counties", counties);
+            List<CountyReceita> countyReceitas = service.getCountyReceitas(county.getFullName(), county.getAno(), county.getMes());
+            view.addObject("counties", countyReceitas);
         } else {
             view = new ModelAndView("despesas-municipio");
-            List<CountyDespesa> counties = service.getCountyDespesas(county.getFullName(), county.getAno(), county.getMes());
-            view.addObject("counties", counties);
+            List<CountyDespesa> countiesDespesas = service.getCountyDespesas(county.getFullName(), county.getAno(), county.getMes());
+            view.addObject("counties", countiesDespesas);
         }
 
         view.addObject("countyName", county.getName());
         return view;
-    }
-
-    @PostMapping("/salvar")
-    public String salvarCounty(@Valid CountyDto countyDto, BindingResult result) {
-
-        if (!result.hasErrors()) {
-            service.saveCounty(countyDto);
-            return "redirect:/municipios/listar";
-        }
-
-        return "redirect:/error";
     }
 
     @GetMapping("error")

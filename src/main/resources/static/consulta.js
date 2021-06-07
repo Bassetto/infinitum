@@ -3,7 +3,7 @@ const inputEl = document.getElementById("county");
 const inputHiddenEl = document.getElementById("fullCounty");
 const formEl = document.getElementById("form");
 const infoEl = document.getElementById("info");
-const dataEl = document.getElementById("data");
+const dataEl = document.getElementById("mesAno");
 
 function getValue() {
     inputHiddenEl.value = "";

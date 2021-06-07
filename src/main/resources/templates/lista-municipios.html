@@ -16,28 +16,28 @@
         <h1 class="display-4">Lista de Counties</h1>
     </div>
     <div>
-        <form id="form" class="" th:action="@{/municipios/consulta}" method="post" th:object="${county}">
+        <form id="form" class="" th:action="@{/municipios/consulta}" method="post">
             <div class="row">
                 <div class="form-floating col-sm-12">
                     <label class="form-label mx-2" for="county">Municípios</label>
                     <input class="form-control" type="search" id="county"
-                           placeholder="Digite o munícipio que deseja pesquisar" list="municipios" name="name" th:field="*{name}"
-                           required>
+                           placeholder="Digite o munícipio que deseja pesquisar" list="municipios" name="name" th:field="*{county.name}"
+                           required autocomplete="off">
                     <div class="invalid-feedback">
                         Digite um munícipio válido
                     </div>
                 </div>
             </div>
-            <div id="info" class="row invisible">
+            <div id="info" class="row invisible mt-2">
                 <div class="col-sm-6">
-                    <select name="tipo" id="tipo" th:field="*{tipo}">
+                    <select name="tipo" id="tipo" th:field="*{county.tipo}">
                         <option th:value="receitas" label="Receitas"></option>
                         <option th:value="despesas" label="Despesas"></option>
                     </select>
                     <label for="tipo">Selecione o que deseja consultar do município</label>
                 </div>
                 <div class="col-sm-6">
-                    <input type="month" id="mesAno">
+                    <input type="month" id="mesAno" autocomplete="off">
                     <label for="mesAno">Selecione o mês e o ano que deseja consultar</label>
                 </div>
             </div>
@@ -47,16 +47,16 @@
                 </div>
             </div>
             <datalist id="municipios">
-                <option th:each="county : ${counties}" th:value="${county.municipio_extenso}"></option>
+                <option th:each="v, i : ${counties}" th:value="${counties[__${i.index}__].municipio_extenso}"></option>
             </datalist>
             <div>
-                <input id="fullCounty" type="hidden" name="fullName" th:field="*{fullName}">
-                <input type="hidden" name="ano" id="ano" th:field="*{ano}">
-                <input type="hidden" name="mes" id="mes" th:field="*{mes}">
+                <input id="fullCounty" type="hidden" name="fullName" th:field="*{county.fullName}">
+                <input type="hidden" name="ano" id="ano" th:field="*{county.ano}">
+                <input type="hidden" name="mes" id="mes" th:field="*{county.mes}">
             </div>
             <datalist id="municipios_extenso">
-                <option th:each="county : ${counties}" th:value="${county.municipio}"
-                        th:label="${county.municipio_extenso}"></option>
+                <option th:each="c, j : ${counties}" th:value="${counties[__${j.index}__].municipio}"
+                        th:label="${counties[__${j.index}__].municipio_extenso}"></option>
             </datalist>
         </form>
     </div>

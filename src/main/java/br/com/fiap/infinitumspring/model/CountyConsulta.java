@@ -3,11 +3,11 @@ package br.com.fiap.infinitumspring.model;
 
 public class CountyConsulta {
 
-    private String name;
-    private String fullName;
-    private String tipo;
-    private String ano;
-    private String mes;
+    String name;
+    String fullName;
+    String tipo;
+    String ano;
+    String mes;
 
     public String getName() {
         return name;

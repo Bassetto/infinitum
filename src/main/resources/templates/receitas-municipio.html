@@ -13,32 +13,36 @@
     <div class="jumbotron">
         <h1 class="display-4" th:text="${countyName}"></h1>
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Orgao</th>
-            <th scope="col">Mês</th>
-            <th scope="col">ds_fonte_recurso</th>
-            <th scope="col">ds_cd_aplicacao_fixo</th>
-            <th scope="col">ds_alinea</th>
-            <th scope="col">ds_subalinea</th>
-            <th scope="col">vl_arrecadacao</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="county : ${counties}">
-            <td th:text="${county.orgao}"></td>
-            <td th:text="${county.mes}"></td>
-            <td th:text="${county.ds_fonte_recurso}"></td>
-            <td th:text="${county.ds_cd_aplicacao_fixo}"></td>
-            <td th:text="${county.ds_alinea}"></td>
-            <td th:text="${county.ds_subalinea}"></td>
-            <td th:text="${county.vl_arrecadacao}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div th:if="${counties.size() > 0}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Orgao</th>
+                <th scope="col">Mês</th>
+                <th scope="col">Fonte do Recurso</th>
+                <th scope="col">Código de Aplicação Fixo</th>
+                <th scope="col">Alínea</th>
+                <th scope="col">Subalínea</th>
+                <th scope="col">Valor da arrecadação</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="county, i : ${counties}">
+                <td th:text="${counties[__${i.index}__].orgao}"></td>
+                <td th:text="${counties[__${i.index}__].mes}"></td>
+                <td th:text="${counties[__${i.index}__].ds_fonte_recurso}"></td>
+                <td th:text="${counties[__${i.index}__].ds_cd_aplicacao_fixo}"></td>
+                <td th:text="${counties[__${i.index}__].ds_alinea}"></td>
+                <td th:text="${counties[__${i.index}__].ds_subalinea}"></td>
+                <td th:text="${counties[__${i.index}__].vl_arrecadacao}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${counties.size() > 0}">
+        <h3>Não foi contrada nenhuma despesa para esse mês</h3>
+    </div>
 </div>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -7,5 +7,5 @@ Projeto de consulta de municípios para o TCE SP
 - [Andrey Oliveira](https://github.com/AndreyOliveira1404)
 - [David Lim Bok](https://github.com/DaviLikesan123)
 - [Leonardo Lebre](https://github.com/leonardo-lebre)
-- [Murillo Albano](https://github.com/)
+- [Murillo Albano](https://github.com/muri-alba)
 - [Victor Bassetto](https://github.com/Bassetto)
